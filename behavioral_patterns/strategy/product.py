@@ -1,11 +1,13 @@
 from dataclasses import dataclass
 
-from .membership_type import MembershipType
+from .pricing_strategy import IPricingStrategy
+
 
 @dataclass
 class Product:
     _name: str
     _price: float
+    _pricing_startegy: IPricingStrategy
 
     @property
     def name(self) -> str:
@@ -23,10 +25,14 @@ class Product:
     def price(self, new_price: float) -> None:
         self._price = new_price
 
-    def calculate_price(self, membership_type: MembershipType) -> float:
-        if membership_type == MembershipType.REGULAR:
-            return self.price
-        elif membership_type == MembershipType.GOLD:
-            return self.price * 0.9
-        elif membership_type == MembershipType.PREMIUM:
-            return self.price * 0.8
+    @property
+    def pricing_startegy(self) -> IPricingStrategy:
+        return self._pricing_startegy
+    
+    @pricing_startegy.setter
+    def pricing_startegy(self, new_pricing_startegy: IPricingStrategy) -> None:
+        self._pricing_startegy = new_pricing_startegy
+    
+
+    def calculate_price(self) -> float:
+        return self._pricing_startegy.calculate_price(price=self.price)
