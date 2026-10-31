@@ -1,15 +1,10 @@
-from .pyment_method_type import PaymentMethodType
+from dataclasses import dataclass
+from .payment_strategy import IPaymentStrategy
 
+
+@dataclass
 class Checkout:
-    def proccess_payment(self, price: float, payment_method: PaymentMethodType) -> None:
-        if payment_method == PaymentMethodType.VISA_CARD:
-            print("processing payment of visa card")
-            print("Calculate fees of the amount for visa card")
+    payment_strategy: IPaymentStrategy
 
-        elif payment_method == PaymentMethodType.PAYPAL:
-            print("processing payment of Paypal")
-            print("Calculate fees of the amount for Paypal")
-
-        elif payment_method == PaymentMethodType.BANK_TRANSFER:
-            print("processing payment of Bank Transfer")
-            print("Calculate fees of the amount for Bank Transfer")
+    def proccess_payment(self, price: float) -> None:
+        self.payment_strategy.process_payment(price=price)
