@@ -1,21 +1,22 @@
 from .text_editor import TextEditor
+from .history import History
+from .text_editor_state import TextEditorState
 
 if __name__ == "__main__":
     editor = TextEditor()
+    history = History()
+
     editor.content = "Hello, "
-    editor.save()
+    history.save_history_state(editor.save())
 
     editor.content = "World!"
-    editor.save()
+    history.save_history_state(editor.save())
 
-    editor.content = "Welcome to the Memento pattern."
+    editor.content = "Welcome to the Memento Pattern."
+    history.save_history_state(editor.save())
 
-    editor.undo()
-    editor.undo()
-    print(editor.content)
-    
-    editor.redo()
-    print(editor.content) 
+    editor.content = "This is a text editor."
 
-    editor.redo()
-    print(editor.content)
+    editor.restore(history.undo())
+
+    print(f"Current content after undo: {editor.content}")
