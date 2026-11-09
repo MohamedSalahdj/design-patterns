@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from .schedule_management_visitor import ScheduleManagmentVisitor
+from .schedule_management_visitor import ScheduleManagementVisitor
 
 
 class ScheduleManagment(ABC):
@@ -12,5 +12,5 @@ class ScheduleManagment(ABC):
         ...
 
     @abstractmethod
-    def accept(self, visitor: ScheduleManagmentVisitor) -> None:
+    def accept(self, visitor: ScheduleManagementVisitor) -> None:
         ...

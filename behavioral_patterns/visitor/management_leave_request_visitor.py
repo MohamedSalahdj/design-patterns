@@ -1,7 +1,7 @@
-from .schedule_management_visitor import ScheduleManagmentVisitor
+from .schedule_management_visitor import ScheduleManagementVisitor
 
 
-class ManagementLeaveRequestVisitor(ScheduleManagmentVisitor):
+class ManagementLeaveRequestVisitor(ScheduleManagementVisitor):
     def visit_day_shift(self, day_shift: "DayShiftScheduleManagment") -> None:
         print("Managing leave request for day shift...")
 

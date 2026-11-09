@@ -1,5 +1,5 @@
 from .schedule_management import ScheduleManagment
-from .schedule_management_visitor import ScheduleManagmentVisitor
+from .schedule_management_visitor import ScheduleManagementVisitor
 
 
 class NightShiftScheduleManagment(ScheduleManagment):
@@ -9,5 +9,5 @@ class NightShiftScheduleManagment(ScheduleManagment):
     def calculating_overtime(self) -> None:
         print("Calculating night shift overtime...")
 
-    def accept(self, visitor: ScheduleManagmentVisitor) -> None:
+    def accept(self, visitor: ScheduleManagementVisitor) -> None:
         visitor.visit_night_shift(self)

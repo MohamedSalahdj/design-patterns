@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 
-class ScheduleManagmentVisitor(ABC):
+class ScheduleManagementVisitor(ABC):
     @abstractmethod
     def visit_day_shift(self, day_shift: "DayShiftScheduleManagment") -> None:
         ...
