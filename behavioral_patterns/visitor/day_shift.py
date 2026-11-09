@@ -1,4 +1,5 @@
 from .schedule_management import ScheduleManagment
+from .schedule_management_visitor import ScheduleManagmentVisitor
 
 
 class DayShiftScheduleManagment(ScheduleManagment):
@@ -8,5 +9,5 @@ class DayShiftScheduleManagment(ScheduleManagment):
     def calculating_overtime(self) -> None:
         print("Calculating day shift overtime...")
 
-    def manage_leave_report(self) -> None:
-        print("Managing day shift leave report...")
+    def accept(self, visitor: ScheduleManagmentVisitor) -> None:
+        visitor.visit_day_shift(self)

@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from .schedule_management_visitor import ScheduleManagmentVisitor
 
 
 class ScheduleManagment(ABC):
@@ -11,5 +12,5 @@ class ScheduleManagment(ABC):
         ...
 
     @abstractmethod
-    def manage_leave_report(self) -> None:
+    def accept(self, visitor: ScheduleManagmentVisitor) -> None:
         ...

@@ -1,4 +1,5 @@
 from .schedule_management import ScheduleManagment
+from .schedule_management_visitor import ScheduleManagmentVisitor
 
 
 class RemoteWorkShiftScheduleManagment(ScheduleManagment):
@@ -8,5 +9,5 @@ class RemoteWorkShiftScheduleManagment(ScheduleManagment):
     def calculating_overtime(self) -> None:
         print("Calculating remote work shift overtime...")
 
-    def manage_leave_report(self) -> None:
-        print("Managing remote work shift leave report...")
+    def accept(self, visitor: ScheduleManagmentVisitor) -> None:
+        visitor.visit_remote_work_shift(self)
